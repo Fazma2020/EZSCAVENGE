@@ -1,0 +1,32 @@
+body {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .signUp.container {
+    margin-top:70px;
+    display: flex;
+    /* justify-items: center; */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+   
+    
+}
+.password{
+  position: relative;
+}
+
+.showButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #007bff;
+}
+label{
+  margin-top:10px;
+  }

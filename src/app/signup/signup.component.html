@@ -1,0 +1,85 @@
+<body style="background-color:#2F3E57">
+    <div class="signUp container">
+      <div class="card" style="width: 30rem; background-color:#b5c3d4">
+        <div class="card-body">
+          <h5 class="card-title">Sign Up</h5>
+          <form #registerForm="ngForm" (ngSubmit)="register()">
+            <div class="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="SignUpForm.name"
+                placeholder="Enter your username"
+                required
+              />
+    
+              <label>Email</label>
+              <input
+                type="text"
+                class="form-control"
+                name="email"
+                [(ngModel)]="SignUpForm.email"
+                placeholder="Enter your Email"
+                required
+                email
+              />
+    
+              <label>Password(8-characters)</label>
+              <div style="position: relative;">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="SignUpForm.password"
+                  placeholder="Enter your Password"
+                  required
+                  minlength="8"
+                />
+              </div>
+    
+              <label>Confirm Password</label>
+              <div class="password-input">
+                <input
+                  type="{{ showText ? 'text' : 'password' }}"
+                  class="form-control"
+                  name="confirmPassword"
+                  [(ngModel)]="SignUpForm.confirmPassword"
+                  placeholder="Confirm your Password"
+                  required
+                />
+                <button
+                  type="button"
+                  style="cursor: pointer;
+                  background: none;
+                  border: none;
+                  font-size: 14px;
+                 
+                  color: #2F3E57;
+                  margin-bottom:20px;"
+                  (click)="confirm('confirmPassword')"
+                >
+                  {{ showText ? 'Hide' : 'Show' }} Password
+                </button>
+              </div>
+             
+    
+    
+            </div>
+            <br />
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!registerForm.valid || SignUpForm.password !==SignUpForm.confirmPassword"
+             style="background-color: #2F3E57;" 
+             routerLink="/login"
+            >
+              Create Account
+            </button>
+    <p class="text-muted" style="display:inline"> Already Have an Account?&nbsp;<a style="display:inline; color:#2F3E57;" class=" " routerLink="/login" routerLinkActive="active">Sign in</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+    </body>
