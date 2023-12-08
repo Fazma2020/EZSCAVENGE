@@ -1,0 +1,118 @@
+body{
+    top:70px;
+    position: relative;
+    margin:10px;
+    padding:10px;
+    background-color: #e6e8eb;
+}
+
+/* search-page.component.css */
+.listings-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .listing-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .listing-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .listing-details {
+    text-align: left;
+  }
+  
+  .details-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  button {
+    /* padding: 12.5px 30px; */
+     border: 0;
+     border-radius: 100px;
+     background-color: #394B66;
+     color: #ffffff;
+     /* font-weight: Bold; */
+     transition: all 0.5s;
+     -webkit-transition: all 0.5s;
+     text-decoration: none;
+   }
+   
+  
+/* Add or modify existing styles for the chat window and icon */
+.chatbot-icon {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    z-index: 1000;
+    animation: bounce 1s infinite alternate;
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: scale(1); /* Start at normal scale */
+    }
+    100% {
+      transform: scale(1.2); /* Scale up to 1.2 times its size */
+    }
+  }
+  .chatbot-icon:hover {
+    animation-play-state: paused;
+    transform: scale(1.2); /* Increase the scale on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .chat-window {
+    position: fixed;
+    bottom: 60px;
+    right: 100px; /* Adjust the right position as per your design */
+    width: 350px;
+    max-height: 80vh; /* Set maximum height to maintain visibility within the viewport */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 999;
+  }
+  
+  .chat-window.open {
+    display: block;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .chat-container {
+    padding: 10px;
+    height: calc(100% - 40px); 
+    overflow-y: auto;
+  }
+  
+  
+  
+
+  

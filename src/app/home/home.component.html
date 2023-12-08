@@ -1,0 +1,114 @@
+
+
+   
+
+ 
+    <body>
+       
+        
+    <div style="top:50px;">
+       
+        <div class="input-group mb-3" style="top:10px;">
+          <input type="text" class="form-control" placeholder="Search for parts..." [(ngModel)]="searchTerm">
+          <div class="input-group-append">
+       
+            <button class="btn btn-primary" type="button" (click)="onSearch()">Search</button>
+          </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-2">
+              <select class="form-control" [(ngModel)]="selectedCarBrand" (ngModelChange)="onSearch()">
+                <option value="">Select Car Brand</option>
+                <option *ngFor="let brand of carBrands" [value]="brand">{{ brand }}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" [(ngModel)]="selectedYear" (ngModelChange)="onSearch()">
+                <option value="">Select Year</option>
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" [(ngModel)]="selectedPartType" (ngModelChange)="onSearch()">
+                <option value="">Select Part Type</option>
+                <option *ngFor="let partType of partTypes" [value]="partType">{{ partType }}</option>
+              </select>
+            </div>
+          </div>
+        
+          <div class="container-fluid" style="display:flex; justify-content:center; margin:10px;">
+          <button class="btn btn-secondary" *ngIf="selectedCarBrand || selectedYear || selectedPartType || searchTerm"
+          (click)="clearFilters()">Clear Filters</button>
+          </div>
+      
+      <ng-container *ngIf="!loading; else loadingContainer">
+       
+        <div class="row" *ngIf="filteredListings.length > 0; else noResultsMessage"> </div>
+        <div class="row">
+          <div class="col-md-3 mb-4" *ngFor="let listing of filteredListings">
+            <div class="card">
+              <img [src]="listing.image" class="card-img-top" alt="{{ listing.title }} Image">
+              <div class="card-body">
+                <h5 class="card-title">{{ listing.title }}</h5>
+                <p class="card-text">Description: {{ listing.description }}</p>
+                <p class="card-text">Price: ${{ listing.price }}</p>
+                <button (click)="navigateToListing(listing.id)" class="btn btn-primary">View Details</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #noResultsMessage>
+        <div class="text-center" style="margin:20px;">
+          <p>No results found. Try Clearing Filters</p>
+        </div>
+      </ng-template>
+      
+      <ng-template #loadingContainer>
+        <!-- Loading indicator -->
+        <div class="text-center" style="margin:20px;">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        
+        </div>
+      </ng-template>
+      
+    </div>
+   
+<div  class="chatbot-icon" (click)="toggleChatbot()">
+    <img src="/assets/customer-service-support-svgrepo-com.svg" alt="Customer Support" width="70" height="70">
+    
+  </div>
+  
+  
+  <div id="chat-window" class="chat-window" [ngClass]="{ 'open': isOpen }">
+    <div class="chat-container" style="margin: 20px;
+    position: relative;
+    padding: 10px;">
+      <div class="chat-box" #chatBox>
+        
+        <div class="d-flex flex-row justify-content-start mb-4">
+         
+          <img src="/assets/customer-service-support-svgrepo-com.svg" alt="Bot" style="width: 45px; height: 100%;">
+          <div class="p-3 ms-3" style="border-radius: 15px; background-color: #12ba2333;">
+            <p class="small mb-0">Welcome! Can't find a part? We've got you covered. How can I assist you today?</p>
+          </div>
+        </div>
+  
+       
+      </div>
+    </div>
+    <div style="display:flex; justify-content:center;">
+    <input type="text" [(ngModel)]="userInput" style="margin: 8px; width: 90%; padding: 10px;" placeholder="Ask EZSCAVENGE..." (keyup.enter)="sendMessage()"> </div>
+    <div style="display:flex; justify-content:center;">  <button class="btn btn-dark" style="display: block; margin-bottom:10px;"  (click)="sendMessage()">Send</button></div>
+  </div>
+  
+
+
+    
+      
+    </body>
